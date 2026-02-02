@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));  
+/* root child */
 
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
