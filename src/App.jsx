@@ -9,6 +9,7 @@ import Settings from "./components/Setting";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ChatWidget from "./components/ChatWidget";
+import Footer from "./components/Footer";
 
 function Navbar() {
   const activeClass = "text-blue-500 border-b-2 border-blue-500";
@@ -84,6 +85,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      
+      <Footer />
     </Router>
   );
 }
