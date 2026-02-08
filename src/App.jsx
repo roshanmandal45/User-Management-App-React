@@ -8,6 +8,7 @@ import UserProfile from "./components/UserProfile";
 import Settings from "./components/Setting";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ChatWidget from "./components/ChatWidget";
 
 function Navbar() {
   const activeClass = "text-blue-500 border-b-2 border-blue-500";
@@ -73,6 +74,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <ChatWidget />
 
       <Routes>
         <Route path="/" element={<Home />} />

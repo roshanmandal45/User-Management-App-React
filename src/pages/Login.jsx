@@ -2,8 +2,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../config/firebase"; // your firebase config
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../config/firebase";
+
 
 const COOKIE_EXPIRY_HOURS = 2;
 
@@ -15,7 +20,11 @@ const Login = () => {
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const user = userCredential.user;
 
       // Save cookie
@@ -25,7 +34,7 @@ const Login = () => {
           name: user.displayName || user.email.split("@")[0],
           photo: user.photoURL || null,
         }),
-        { expires: COOKIE_EXPIRY_HOURS / 24 }
+        { expires: COOKIE_EXPIRY_HOURS / 24 },
       );
 
       alert("Login successful ✅");
@@ -48,7 +57,7 @@ const Login = () => {
           name: user.displayName || user.email.split("@")[0],
           photo: user.photoURL || null,
         }),
-        { expires: COOKIE_EXPIRY_HOURS / 24 }
+        { expires: COOKIE_EXPIRY_HOURS / 24 },
       );
 
       alert("Google login successful ✅");
@@ -61,7 +70,9 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Welcome Back
+        </h2>
 
         <form onSubmit={handleEmailLogin} className="space-y-4">
           <div>
