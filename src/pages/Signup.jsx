@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
+import { useAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -17,11 +18,19 @@ const Signup = () => {
   const [confirmationResult, setConfirmationResult] = useState(null);
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      login({
+        name: user.displayName || user.email.split("@")[0],
+        photo: user.photoURL || null,
+        uid: user.uid,
+        email: user.email
+      });
       alert("Signup successful");
       navigate("/");
     } catch (error) {
@@ -59,7 +68,14 @@ const Signup = () => {
 
   const verifyOTP = async () => {
     try {
-      await confirmationResult.confirm(otp);
+      const result = await confirmationResult.confirm(otp);
+      const user = result.user;
+      login({
+        name: user.displayName || user.phoneNumber,
+        photo: user.photoURL || null,
+        uid: user.uid,
+        email: null
+      });
       alert("Phone signup successful");
       navigate("/");
     } catch (error) {
@@ -69,7 +85,14 @@ const Signup = () => {
 
   const handleGoogleSignup = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      login({
+        name: user.displayName || user.email.split("@")[0],
+        photo: user.photoURL || null,
+        uid: user.uid,
+        email: user.email
+      });
       alert("Google signup successful");
       navigate("/");
     } catch (error) {

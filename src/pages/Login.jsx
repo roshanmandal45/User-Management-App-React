@@ -1,7 +1,7 @@
 // Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useAuth } from "../context/AuthContext";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -10,11 +10,10 @@ import {
 import { auth } from "../config/firebase";
 
 
-const COOKIE_EXPIRY_HOURS = 2;
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleEmailLogin = async (e) => {
@@ -27,15 +26,12 @@ const Login = () => {
       );
       const user = userCredential.user;
 
-      // Save cookie
-      Cookies.set(
-        "user",
-        JSON.stringify({
+      login({
           name: user.displayName || user.email.split("@")[0],
           photo: user.photoURL || null,
-        }),
-        { expires: COOKIE_EXPIRY_HOURS / 24 },
-      );
+          uid: user.uid,
+          email: user.email
+      });
 
       alert("Login successful ✅");
       navigate("/"); // go home
@@ -50,15 +46,12 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Save cookie
-      Cookies.set(
-        "user",
-        JSON.stringify({
+      login({
           name: user.displayName || user.email.split("@")[0],
           photo: user.photoURL || null,
-        }),
-        { expires: COOKIE_EXPIRY_HOURS / 24 },
-      );
+          uid: user.uid,
+          email: user.email
+      });
 
       alert("Google login successful ✅");
       navigate("/"); // go home
