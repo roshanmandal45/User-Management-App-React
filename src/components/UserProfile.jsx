@@ -26,6 +26,8 @@ export default function UserProfile() {
         {user.first_name} {user.last_name}
       </h1>
       <p className="text-lg text-gray-700 dark:text-gray-300">{user.email}</p>
+
+      <button className="p-2 bg-blue-700 mt-10 text-white rounded-2xl text-shadow-2xs shadow active:scale-95">Add to friend</button>
     </div>
   );
 }
