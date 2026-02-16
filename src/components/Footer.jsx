@@ -6,17 +6,54 @@ export default function Footer() {
     <footer className="relative bg-white dark:bg-gray-900 pt-16 pb-8 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          
-          {/* Brand Column */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-              UserMApp
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-              Elevating user management with style and precision. Build better teams, faster.
-            </p>
-            <div className="flex gap-4">
-              {/* Social Icons */}
+        
+                <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <svg className="w-10 h-10" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stopColor="#2563eb" />
+                    <stop offset="100%" stopColor="#7c3aed" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="48" height="48" rx="10" fill="url(#g1)" />
+                  <path d="M14 32v-16h8l6 8-6 8h-8z" fill="white" opacity="0.95" />
+                  </svg>
+                  <h3 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                  UserMApp
+                  </h3>
+                </div>
+
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                  Elevating user management with style and precision. Build better teams, faster — secure, auditable, and delightful.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 text-xs bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full">SSO</span>
+                  <span className="px-2 py-1 text-xs bg-purple-50 dark:bg-purple-900/20 text-purple-600 rounded-full">RBAC</span>
+                  <span className="px-2 py-1 text-xs bg-green-50 dark:bg-green-900/20 text-green-600 rounded-full">Audit Logs</span>
+                  <span className="px-2 py-1 text-xs bg-yellow-50 dark:bg-yellow-900/10 text-yellow-600 rounded-full">Real-time</span>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <Link to="/demo" className="text-sm px-3 py-2 bg-white/90 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition">
+                  Try Demo
+                  </Link>
+                  <Link to="/docs" className="text-sm px-3 py-2 text-blue-600 border border-blue-100 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
+                  Docs
+                  </Link>
+                </div>
+
+                <div className="text-xs text-gray-400 dark:text-gray-500 space-y-1">
+                  <div>
+                  Contact: <a href="mailto:hello@usermapp.com" className="text-blue-600 dark:text-blue-400 hover:underline">hello@usermapp.com</a>
+                  </div>
+                  <div>
+                  Phone: <a href="tel:+1234567890" className="text-gray-500 dark:text-gray-400 hover:text-blue-400">+1 (234) 567-890</a>
+                  </div>
+                </div>
+
+                <div className="flex gap-4"> {/* Social Icons */}
               {['github', 'twitter', 'linkedin'].map((social) => (
                 <a 
                   key={social}
