@@ -53,7 +53,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-750 transition-colors duration-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-900">
+            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800  dark:hover:bg-gray-750  transition-colors duration-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-9">
               <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
               </div>
@@ -64,7 +64,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800 hover:bg-purple-50 dark:hover:bg-gray-750 transition-colors duration-300 border border-transparent hover:border-purple-200 dark:hover:border-purple-900">
+            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800  dark:hover:bg-gray-750 transition-colors duration-300 border border-transparent hover:border-purple-200 dark:hover:border-purple-900">
               <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
               </div>
@@ -75,7 +75,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-750 transition-colors duration-300 border border-transparent hover:border-green-200 dark:hover:border-green-900">
+            <div className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-750 transition-colors duration-300 border border-transparent hover:border-green-200 dark:hover:border-green-900">
               <div className="w-14 h-14 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-6 text-green-600 dark:text-green-400 group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
               </div>
