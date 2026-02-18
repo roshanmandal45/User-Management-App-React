@@ -25,7 +25,56 @@ export default function Home() {
                 Speed & Style
               </span>
             </h1>
-            
+            <>
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
+              </p>
+
+              <div className="mt-6 flex items-center justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl w-full">
+                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5V8a2 2 0 00-2-2h-3M2 20h5V4a2 2 0 012-2h6a2 2 0 012 2v16" /></svg>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">12.4k</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">Total Users</div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">98%</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">Active Weekly</div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">132</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">New Today</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <div className="flex -space-x-3">
+                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=1" alt="avatar1" />
+                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=2" alt="avatar2" />
+                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=3" alt="avatar3" />
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  Trusted by teams at startups and enterprises worldwide
+                </div>
+              </div>
+            </>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
               A precise, secure, and beautiful way to manage your user base. track stats, names, emails, and avatars with our modern dashboard.
             </p>
