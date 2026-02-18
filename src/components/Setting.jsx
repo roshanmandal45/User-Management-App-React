@@ -100,34 +100,34 @@ export default function Settings() {
             </div>
           )}
 
-          {/* Password Section */}
-          {active === "password" && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold dark:text-white">Change Password</h2>
+          /* Password Section */
+                {active === "password" && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-red-600 dark:text-red-400">Change Password</h2>
 
-              <input
-                type="password"
-                placeholder="Current Password"
-                className="w-full p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
-              />
-              <input
-                type="password"
-                placeholder="New Password"
-                className="w-full p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
-              />
-              <input
-                type="password"
-                placeholder="Confirm New Password"
-                className="w-full p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
-              />
+                  <input
+                  type="password"
+                  placeholder="Current Password"
+                  className="w-full p-3 rounded-lg border border-red-200 dark:border-red-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-700"
+                  />
+                  <input
+                  type="password"
+                  placeholder="New Password"
+                  className="w-full p-3 rounded-lg border border-red-200 dark:border-red-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-700"
+                  />
+                  <input
+                  type="password"
+                  placeholder="Confirm New Password"
+                  className="w-full p-3 rounded-lg border border-red-200 dark:border-red-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-700"
+                  />
 
-              <button className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:scale-105 transition">
-                Update Password
-              </button>
-            </div>
-          )}
+                  <button className="px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg hover:scale-105 transition">
+                  Update Password
+                  </button>
+                </div>
+                )}
 
-          {/* Notifications Section */}
+                {/* Notifications Section */}
           {active === "notifications" && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold dark:text-white">Notifications</h2>
