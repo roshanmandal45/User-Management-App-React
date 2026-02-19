@@ -32,7 +32,20 @@ const Signup = () => {
         email: user.email
       });
       alert("Signup successful");
-      navigate("/");
+      // show a temporary success banner before navigating
+      const container = document.querySelector('.max-w-md');
+      if (container) {
+        const banner = document.createElement('div');
+        banner.textContent = 'Signup successful! Redirecting...';
+        banner.className = 'mb-4 p-3 rounded text-white bg-green-600 text-center';
+        container.prepend(banner);
+        setTimeout(() => {
+          banner.remove();
+          navigate("/");
+        }, 1400);
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       alert(error.message);
     }
