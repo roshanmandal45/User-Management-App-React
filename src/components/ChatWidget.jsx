@@ -10,7 +10,167 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import Cookies from "js-cookie";
+// Inject a complete UI override via a scoped stylesheet so the existing JSX renders with a new look/feel.
+(function injectChatWidgetOverride() {
+  if (typeof document === "undefined") return;
+  if (document.getElementById("chatwidget-override-styles")) return;
 
+  const css = `
+  /* Target the ChatWidget root (matches the exact class list used in the component) */
+  .fixed.bottom-6.right-6.z-50.font-sans {
+    inset: 0 !important;
+    bottom: auto !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(5, 7, 15, 0.65) !important;
+    padding: 24px !important;
+    z-index: 9999 !important;
+    backdrop-filter: blur(6px);
+  }
+
+  /* Hide the original floating button (we'll present a full-screen modal style) */
+  .fixed.bottom-6.right-6.z-50.font-sans > button {
+    display: none !important;
+  }
+
+  /* Restyle the chat window to be a modern, centered modal */
+  .fixed.bottom-6.right-6.z-50.font-sans > div {
+    width: min(920px, 96%) !important;
+    max-width: 920px !important;
+    height: min(640px, 92%) !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: linear-gradient(180deg, #071021 0%, #081426 60%) !important;
+    color: #e6eef8 !important;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.7) !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+  }
+
+  /* Header: crisp, compact, left aligned title + subtle subtitle */
+  .fixed.bottom-6.right-6.z-50.font-sans > div > .p-4 {
+    background: linear-gradient(90deg, rgba(6,182,212,0.12), rgba(99,102,241,0.10)) !important;
+    color: #eaf6ff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px;
+    padding: 18px !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans > div > .p-4 h3 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: -0.2px;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans > div > .p-4 p {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.85;
+    color: rgba(230,238,248,0.85);
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans > div > .p-4 button {
+    background: transparent !important;
+    color: rgba(230,238,248,0.95) !important;
+    font-size: 20px !important;
+    border: none !important;
+    padding: 6px !important;
+    cursor: pointer;
+  }
+
+  /* Messages area: make it airy, with glassy backdrop and larger message bubbles */
+  .fixed.bottom-6.right-6.z-50.font-sans .flex-1.overflow-y-auto {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent) !important;
+    padding: 20px !important;
+    gap: 12px !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans .rounded-2xl {
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    padding: 12px 14px !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Outgoing (me) bubble */
+  .fixed.bottom-6.right-6.z-50.font-sans .bg-blue-600 {
+    background: linear-gradient(90deg,#06b6d4,#6366f1) !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  /* Incoming bubble */
+  .fixed.bottom-6.right-6.z-50.font-sans .bg-white,
+  .fixed.bottom-6.right-6.z-50.font-sans .bg-white.dark\\:bg-gray-800 {
+    background: rgba(255,255,255,0.03) !important;
+    color: rgba(230,238,248,0.95) !important;
+    border: 1px solid rgba(255,255,255,0.03) !important;
+  }
+
+  .fixed.bottom-6.right-6.z-50.font-sans .text-[10px] {
+    color: rgba(230,238,248,0.7) !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans img {
+    border-radius: 9999px !important;
+    object-fit: cover !important;
+  }
+
+  /* Input area: floating glass bar with pill textarea and gradient send */
+  .fixed.bottom-6.right-6.z-50.font-sans > div > .p-3.border-t {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
+    border-top: 1px solid rgba(255,255,255,0.04) !important;
+    padding: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans textarea {
+    flex: 1 !important;
+    background: rgba(255,255,255,0.02) !important;
+    color: #e6eef8 !important;
+    padding: 10px 14px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255,255,255,0.03) !important;
+    resize: none !important;
+    max-height: 160px !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans button[type="submit"] {
+    background: linear-gradient(90deg,#06b6d4,#6366f1) !important;
+    color: white !important;
+    padding: 8px 14px !important;
+    border-radius: 999px !important;
+    box-shadow: 0 6px 18px rgba(99,102,241,0.18) !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  .fixed.bottom-6.right-6.z-50.font-sans .disabled\\:opacity-50[disabled] {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Small responsive tweak for very small screens */
+  @media (max-width: 480px) {
+    .fixed.bottom-6.right-6.z-50.font-sans > div {
+      width: calc(100% - 32px) !important;
+      height: calc(100% - 48px) !important;
+      border-radius: 12px !important;
+    }
+    .fixed.bottom-6.right-6.z-50.font-sans > div > .p-4 {
+      padding: 14px !important;
+    }
+    .fixed.bottom-6.right-6.z-50.font-sans > div > .p-3.border-t {
+      padding: 12px !important;
+    }
+  }
+  `;
+
+  const style = document.createElement("style");
+  style.id = "chatwidget-override-styles";
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+})();
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
