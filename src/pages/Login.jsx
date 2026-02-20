@@ -16,6 +16,68 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    const root = document.querySelector('.min-h-screen');
+    if (!root) return;
+
+    // Make page background a stronger blue gradient
+    root.style.background = 'linear-gradient(90deg, #0ea5ff 0%, #0369a1 100%)';
+
+    // Tweak the card to a bluish card with white text
+    const card = root.querySelector('.max-w-md');
+    if (card) {
+      card.style.background = '#0f172a'; // dark blue-gray
+      card.style.color = '#e6f7ff'; // pale blue text
+      card.style.boxShadow = '0 10px 30px rgba(2, 48, 71, 0.4)';
+      card.style.borderRadius = '1rem';
+      card.style.padding = '2rem';
+    }
+
+    // Style primary submit button to vivid blue
+    const submit = root.querySelector('button[type="submit"]');
+    if (submit) {
+      submit.style.background = '#0066ff';
+      submit.style.color = '#ffffff';
+      submit.style.border = 'none';
+      submit.style.boxShadow = '0 6px 18px rgba(0,102,255,0.25)';
+    }
+
+    // Style Google button to match blue theme (light background + blue border)
+    let googleBtn = Array.from(root.querySelectorAll('button')).find(b =>
+      /google/i.test(b.textContent || '')
+    );
+    if (googleBtn) {
+      googleBtn.style.background = '#eaf4ff';
+      googleBtn.style.border = '1px solid #88c0ff';
+      googleBtn.style.color = '#003a63';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (root) {
+        root.style.background = '';
+        if (card) {
+          card.style.background = '';
+          card.style.color = '';
+          card.style.boxShadow = '';
+          card.style.borderRadius = '';
+          card.style.padding = '';
+        }
+        if (submit) {
+          submit.style.background = '';
+          submit.style.color = '';
+          submit.style.border = '';
+          submit.style.boxShadow = '';
+        }
+        if (googleBtn) {
+          googleBtn.style.background = '';
+          googleBtn.style.border = '';
+          googleBtn.style.color = '';
+        }
+      }
+    };
+  }, []);
+
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     try {
