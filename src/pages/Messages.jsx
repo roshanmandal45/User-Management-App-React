@@ -71,121 +71,211 @@ export default function Messages() {
   };
 
   return (
-    <div className="h-[calc(100vh-80px)] bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+    <div className="h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 p-6">
+      <div className="mx-auto w-full max-w-6xl h-[92vh] bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden grid grid-cols-12">
+        {/* Left: Participants */}
+        <aside className="col-span-3 border-r border-gray-100 dark:border-gray-800 p-4 flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h4 className="font-semibold text-gray-700 dark:text-gray-200">Participants</h4>
+            <span className="text-xs text-gray-400">{messages.length}</span>
+          </div>
 
-      <div className="w-full max-w-4xl h-full backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 border border-white/20 dark:border-gray-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+          <div className="relative">
+            <input
+              type="search"
+              placeholder="Search..."
+              className="w-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200 rounded-md px-3 py-2 focus:outline-none"
+            />
+          </div>
 
-        {/* Header */}
-        <div className="px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-between shadow-md">
-          <h3 className="font-semibold text-lg tracking-wide flex items-center gap-2">
-            💬 Community Chat
-          </h3>
-        </div>
+          <div className="overflow-auto space-y-3 mt-2">
+            {Object.values(
+              messages.reduce((acc, m) => {
+                const key = m.uid || m.id || m.displayName || Math.random().toString();
+                if (!acc[key]) acc[key] = m;
+                return acc;
+              }, {})
+            ).map((p) => (
+              <div
+                key={p.id || p.uid}
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+              >
+                <img
+                  src={
+                    p.photoURL ||
+                    `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                      p.displayName || "User"
+                    )}&background=random`
+                  }
+                  alt="avatar"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div className="flex-1">
+                  <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                    {p.displayName || "User"}
+                  </div>
+                  <div className="text-xs text-gray-400 truncate">
+                    {p.text?.slice(0, 40) || "No messages yet"}
+                  </div>
+                </div>
+                <div className="text-xs text-gray-400">
+                  {p.createdAt?.seconds
+                    ? new Date(p.createdAt.seconds * 1000).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : ""}
+                </div>
+              </div>
+            ))}
+            {messages.length === 0 && (
+              <div className="text-sm text-gray-400">No participants yet</div>
+            )}
+          </div>
+        </aside>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scroll-smooth">
-
-          {loading ? (
-            <div className="flex justify-center items-center h-full text-gray-400">
-              Loading conversation...
+        {/* Center: Chat */}
+        <main className="col-span-7 flex flex-col">
+          {/* Header */}
+          <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                💬 Community Chat
+              </h3>
+              <p className="text-xs text-gray-400">Be kind — this is a friendly space</p>
             </div>
-          ) : messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">
-              <p>No messages yet.</p>
-              <p>Start the conversation 🚀</p>
-            </div>
-          ) : (
-            messages.map((msg) => {
-              const isMe =
-                user && (msg.uid === user.uid || msg.uid === user.id);
+            <div className="text-sm text-gray-500">{user?.name || user?.email || "Guest"}</div>
+          </div>
 
-              return (
-                <div
-                  key={msg.id}
-                  className={`flex items-end gap-2 animate-fadeIn ${
-                    isMe ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {/* Avatar */}
-                  {!isMe && (
-                    <img
-                      src={
-                        msg.photoURL ||
-                        `https://ui-avatars.com/api/?name=${msg.displayName}`
-                      }
-                      alt="avatar"
-                      className="w-9 h-9 rounded-full object-cover shadow-md"
-                    />
-                  )}
-
-                  {/* Bubble */}
+          {/* Messages area */}
+          <div className="flex-1 overflow-y-auto px-6 py-5 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+            {loading ? (
+              <div className="flex items-center justify-center h-full text-gray-400">
+                Loading conversation...
+              </div>
+            ) : messages.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">
+                <p className="text-sm">No messages yet.</p>
+                <p className="text-xs">Be the first to say hello 👋</p>
+              </div>
+            ) : (
+              messages.map((msg) => {
+                const isMe = user && (msg.uid === user.uid || msg.uid === user.id);
+                return (
                   <div
-                    className={`max-w-[70%] px-5 py-3 rounded-2xl text-sm shadow-md transition-all duration-300 ${
-                      isMe
-                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-none"
-                        : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700"
+                    key={msg.id}
+                    className={`flex items-end gap-3 ${
+                      isMe ? "justify-end" : "justify-start"
                     }`}
                   >
                     {!isMe && (
-                      <p className="text-xs font-semibold text-indigo-500 mb-1">
-                        {msg.displayName}
-                      </p>
+                      <img
+                        src={
+                          msg.photoURL ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                            msg.displayName || "User"
+                          )}&background=random`
+                        }
+                        alt="avatar"
+                        className="w-9 h-9 rounded-full object-cover"
+                      />
                     )}
 
-                    <p className="break-words leading-relaxed">
-                      {msg.text}
-                    </p>
-
-                    {msg.createdAt && (
-                      <p
-                        className={`text-[10px] mt-2 text-right ${
+                    <div className="max-w-[75%]">
+                      <div
+                        className={`px-4 py-2 rounded-2xl text-sm break-words shadow-sm ${
                           isMe
-                            ? "text-white/70"
-                            : "text-gray-400"
+                            ? "bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-br-none"
+                            : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none border border-gray-100 dark:border-gray-700"
                         }`}
                       >
-                        {msg.createdAt?.seconds
-                          ? new Date(
-                              msg.createdAt.seconds * 1000
-                            ).toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          : "Just now"}
-                      </p>
+                        {!isMe && (
+                          <div className="text-[11px] font-semibold text-indigo-600 mb-1">
+                            {msg.displayName || "User"}
+                          </div>
+                        )}
+                        <div className="leading-relaxed">{msg.text}</div>
+                        <div
+                          className={`text-[10px] mt-2 text-right ${
+                            isMe ? "text-white/70" : "text-gray-400"
+                          }`}
+                        >
+                          {msg.createdAt?.seconds
+                            ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })
+                            : "Just now"}
+                        </div>
+                      </div>
+                    </div>
+
+                    {isMe && (
+                      <img
+                        src={
+                          msg.photoURL ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                            msg.displayName || "You"
+                          )}&background=random`
+                        }
+                        alt="avatar"
+                        className="w-9 h-9 rounded-full object-cover"
+                      />
                     )}
                   </div>
-                </div>
-              );
-            })
-          )}
+                );
+              })
+            )}
 
-          <div ref={messagesEndRef} />
-        </div>
+            <div ref={messagesEndRef} />
+          </div>
 
-        {/* Input */}
-        <div className="p-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800">
-          <form
-            onSubmit={handleSendMessage}
-            className="flex items-center gap-3"
-          >
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:border-blue-500 rounded-full px-6 py-3 text-base text-gray-900 dark:text-white focus:outline-none shadow-sm transition-all duration-300"
-            />
+          {/* Input (floating style) */}
+          <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <form onSubmit={handleSendMessage} className="flex items-center gap-3">
+              <button
+                type="button"
+                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                title="Attach"
+              >
+                📎
+              </button>
 
-            <button
-              type="submit"
-              disabled={!message.trim()}
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3 rounded-full shadow-lg hover:scale-105 hover:shadow-blue-500/40 transition-all duration-300 disabled:opacity-50"
-            >
-              🚀
-            </button>
-          </form>
-        </div>
+              <input
+                type="text"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Write a message and press Enter..."
+                className="flex-1 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-4 py-3 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              />
+
+              <button
+                type="submit"
+                disabled={!message.trim()}
+                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full text-sm transition disabled:opacity-50"
+              >
+                Send
+              </button>
+            </form>
+          </div>
+        </main>
+
+        {/* Right: Info / Tips */}
+        <aside className="col-span-2 border-l border-gray-100 dark:border-gray-800 p-4">
+          <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Tips</h5>
+          <ul className="mt-3 text-xs text-gray-500 space-y-2">
+            <li>Be respectful and helpful.</li>
+            <li>Use clear messages and avoid spam.</li>
+            <li>Click a participant to view recent messages.</li>
+          </ul>
+
+          <div className="mt-6 text-xs text-gray-400">
+            <div>Connected as</div>
+            <div className="mt-2 font-medium text-gray-700 dark:text-gray-100">
+              {user?.name || user?.email || "Guest"}
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   );
