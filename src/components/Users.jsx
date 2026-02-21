@@ -6,7 +6,29 @@ export default function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchUsers().then((data) => setUsers(data));
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await fetchUsers();
+        if (!mounted) return;
+        const enhanced = data.map((u) => ({
+          ...u,
+          // provide a pleasant fallback avatar based on initials when missing
+          avatar:
+            u.avatar ||
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(
+              `${u.first_name} ${u.last_name}`
+            )}&background=0D8ABC&color=fff&size=128`,
+        }));
+        setUsers(enhanced);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+        if (mounted) setUsers([]);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
