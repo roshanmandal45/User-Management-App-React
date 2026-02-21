@@ -6,7 +6,36 @@ export default function Footer() {
     <footer className="relative bg-white dark:bg-gray-900 pt-16 pb-8 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        
+        <div>
+          <h4 className="font-bold text-gray-900 dark:text-white mb-6">Resources</h4>
+          <ul className="space-y-4 text-sm text-gray-500 dark:text-gray-400">
+            <li>
+              <Link to="/docs" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                Documentation
+              </Link>
+            </li>
+            <li>
+              <a
+                href="https://api.usermapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                API
+              </a>
+            </li>
+            <li>
+              <Link to="/faq" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link to="/support" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                Support
+              </Link>
+            </li>
+          </ul>
+        </div>
                 <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <svg className="w-10 h-10" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
