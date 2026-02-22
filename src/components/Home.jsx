@@ -29,7 +29,102 @@ export default function Home() {
               <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
                 Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
               </p>
+              <div className="mt-6">
+                {/* Search / Quick actions */}
+                <div className="mx-auto max-w-3xl flex flex-col sm:flex-row items-center gap-3">
+                  <div className="flex items-center w-full sm:w-3/4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-full px-4 py-2 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                    <input
+                      aria-label="Search users"
+                      className="ml-3 w-full bg-transparent outline-none text-gray-700 dark:text-gray-200 placeholder-gray-400"
+                      placeholder="Search users, emails, or roles (e.g. 'admin')"
+                    />
+                    <select className="ml-3 bg-transparent text-sm text-gray-600 dark:text-gray-300 outline-none">
+                      <option>All roles</option>
+                      <option>Admin</option>
+                      <option>Member</option>
+                      <option>Guest</option>
+                    </select>
+                    <button className="ml-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md">
+                      Search
+                    </button>
+                  </div>
 
+                  <Link
+                    to="/signup"
+                    className="w-full sm:w-auto px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-full flex items-center justify-center gap-2 hover:shadow-lg"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                    Add User
+                  </Link>
+                </div>
+
+                {/* Quick preview of recent users */}
+                <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full">Admin</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 2h ago</div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=8" alt="user-2" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-300 rounded-full">Member</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: yesterday</div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=12" alt="user-3" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 rounded-full">Guest</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 3d ago</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Micro-metrics row */}
+                <div className="mt-6 mx-auto max-w-3xl flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="text-xs text-gray-500 dark:text-gray-400">Monthly growth</div>
+                    <div className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm font-semibold text-green-600 dark:text-green-300 shadow-sm">+6.8%</div>
+                  </div>
+
+                  <div className="hidden sm:flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3l2 2" /></svg>
+                    <div>Average session 5m 12s</div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="text-xs text-gray-500 dark:text-gray-400">Verified</div>
+                    <div className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs rounded-full flex items-center gap-1 shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                      Company-ready
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="mt-6 flex items-center justify-center">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl w-full">
                   <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
