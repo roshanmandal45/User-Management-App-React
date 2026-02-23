@@ -6,9 +6,17 @@ export default function UserProfile() {
 
   if (!user) {
     return (
-      <p className="text-center mt-10 animate-pulse text-gray-700 dark:text-gray-300">
-        Loading user...
-      </p>
+      <div className="flex flex-col items-center justify-center min-h-[50vh] mt-10">
+        <p className="text-center animate-pulse text-gray-700 dark:text-gray-300 mb-4">
+          No user data available.
+        </p>
+        <button
+          onClick={() => window.history.back()}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Go back
+        </button>
+      </div>
     );
   }
 
