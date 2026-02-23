@@ -73,29 +73,113 @@ export default function Messages() {
   return (
     <div className="h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="mx-auto w-full max-w-6xl h-[92vh] bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden grid grid-cols-12">
-        {/* Left: Participants */}
-        <aside className="col-span-3 border-r border-gray-100 dark:border-gray-800 p-4 flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <h4 className="font-semibold text-gray-700 dark:text-gray-200">Participants</h4>
-            <span className="text-xs text-gray-400">{messages.length}</span>
-          </div>
+        /* Left: Participants */
+          <aside className="col-span-3 border-r border-gray-100 dark:border-gray-800 p-4 flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h4 className="font-semibold text-gray-700 dark:text-gray-200">Participants</h4>
+              <span className="text-xs text-gray-400">{messages.length}</span>
+            </div>
 
-          <div className="relative">
-            <input
-              type="search"
-              placeholder="Search..."
-              className="w-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200 rounded-md px-3 py-2 focus:outline-none"
-            />
-          </div>
+            <div className="relative">
+              <input
+                type="search"
+                placeholder="Search..."
+                className="w-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200 rounded-md px-3 py-2 focus:outline-none"
+              />
+            </div>
 
-          <div className="overflow-auto space-y-3 mt-2">
-            {Object.values(
-              messages.reduce((acc, m) => {
+            <div className="overflow-auto space-y-3 mt-2">
+              {(() => {
+                const participants = Object.values(
+            messages.reduce((acc, m) => {
+              const key = m.uid || m.id || m.displayName || m.text?.slice(0, 10) || Math.random().toString();
+              // keep the most recent message per participant and count messages
+              if (!acc[key] || (m.createdAt?.seconds || 0) > (acc[key].createdAt?.seconds || 0)) {
+                acc[key] = { ...m, count: (acc[key]?.count || 0) + 1 };
+              } else {
+                acc[key].count = (acc[key].count || 0) + 1;
+              }
+              return acc;
+            }, {})
+                ).sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+
+                return participants.map((p) => {
+            const lastSeconds = p.createdAt?.seconds || 0;
+            const lastDate = lastSeconds ? new Date(lastSeconds * 1000) : null;
+            const minutesAgo = lastDate ? (Date.now() - lastDate.getTime()) / 60000 : Infinity;
+            const online = minutesAgo <= 5; // consider "online" if last message within 5 minutes
+
+            return (
+              <div
+                key={p.id || p.uid || p.displayName}
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+              >
+                <div className="relative">
+                  <img
+              src={
+                p.photoURL ||
+                `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                  p.displayName || "User"
+                )}&background=random`
+              }
+              alt="avatar"
+              className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <span
+              className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ring-1 ring-white ${
+                online ? "bg-green-400" : "bg-gray-400"
+              }`}
+              title={online ? "Active recently" : "Offline"}
+                  />
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+              <div className="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
+                {p.displayName || p.uid || "User"}
+              </div>
+              <div className="text-xs text-gray-400">
+                {lastDate
+                  ? lastDate.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                    })
+                  : ""}
+              </div>
+                  </div>
+
+                  <div className="text-xs text-gray-400 truncate">
+              {p.text ? p.text.slice(0, 60) : "No recent messages"}
+                  </div>
+
+                  <div className="mt-1 text-[11px] text-gray-500 flex items-center gap-2">
+              <span>Messages: {p.count || 1}</span>
+              <span className="hidden sm:inline">| ID: {String(p.uid || p.id || "").slice(0, 8)}</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="text-xs text-indigo-600 hover:underline"
+                  title="Start a direct chat"
+                >
+                  Message
+                </button>
+              </div>
+            );
+                });
+              })()}
+
+              {messages.length === 0 && (
+                <div className="text-sm text-gray-400">No participants yet</div>
+              )}
+            </div>
+          </aside>
                 const key = m.uid || m.id || m.displayName || Math.random().toString();
                 if (!acc[key]) acc[key] = m;
                 return acc;
-              }, {})
-            ).map((p) => (
+               {}
+            .map((p)
               <div
                 key={p.id || p.uid}
                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
