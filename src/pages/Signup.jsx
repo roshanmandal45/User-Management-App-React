@@ -31,6 +31,49 @@ const Signup = () => {
         uid: user.uid,
         email: user.email
       });
+
+      // update UI inline: hide the signup form and show a small profile preview + welcome
+      try {
+        const displayName = user.displayName || (user.email ? user.email.split("@")[0] : "User");
+        const container = document.querySelector(".max-w-md");
+        if (container) {
+          const formEl = container.querySelector("form");
+          if (formEl) formEl.classList.add("hidden");
+
+          const header = container.querySelector("h2");
+          if (header) header.textContent = `Welcome, ${displayName}!`;
+
+          // remove previous preview if any
+          const existing = container.querySelector(".user-profile-preview");
+          if (existing) existing.remove();
+
+          const profile = document.createElement("div");
+          profile.className = "user-profile-preview mt-4 flex items-center space-x-4 p-4 bg-green-50 rounded";
+
+          if (user.photoURL) {
+        const img = document.createElement("img");
+        img.src = user.photoURL;
+        img.alt = displayName;
+        img.className = "w-12 h-12 rounded-full";
+        profile.appendChild(img);
+          } else {
+        const placeholder = document.createElement("div");
+        placeholder.className = "w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold";
+        placeholder.textContent = displayName.charAt(0).toUpperCase();
+        profile.appendChild(placeholder);
+          }
+
+          const info = document.createElement("div");
+          info.innerHTML = `<div class="font-semibold">${displayName}</div><div class="text-sm text-gray-500">${user.email || user.phoneNumber || ""}</div>`;
+          profile.appendChild(info);
+
+          // insert profile under the heading
+          if (header && header.parentNode) header.parentNode.insertBefore(profile, header.nextSibling);
+        }
+      } catch (e) {
+        // non-fatal UI update error; keep signup flow working
+        console.error("UI update error:", e);
+      }
       alert("Signup successful");
       // show a temporary success banner before navigating
       const container = document.querySelector('.max-w-md');
