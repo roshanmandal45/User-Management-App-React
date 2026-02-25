@@ -122,64 +122,89 @@ export default function Messages() {
                     : Infinity;
                   const online = minutesAgo <= 5; // consider "online" if last message within 5 minutes
 
-                  return (
+                    return (
                     <div
                       key={p.id || p.uid || p.displayName}
-                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                      className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 cursor-pointer transition"
                     >
-                      <div className="relative">
+                      <div className="relative flex-shrink-0">
+                      <div
+                        className={`w-12 h-12 rounded-full overflow-hidden ring-2 ${
+                        online ? "ring-green-300" : "ring-gray-200 dark:ring-gray-700"
+                        }`}
+                      >
                         <img
-                          src={
-                            p.photoURL ||
-                            `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                              p.displayName || "User"
-                            )}&background=random`
-                          }
-                          alt="avatar"
-                          className="w-12 h-12 rounded-full object-cover"
+                        src={
+                          p.photoURL ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                          p.displayName || "User"
+                          )}&background=random`
+                        }
+                        alt="avatar"
+                        className="w-full h-full object-cover"
                         />
-                        <span
-                          className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ring-1 ring-white ${
-                            online ? "bg-green-400" : "bg-gray-400"
-                          }`}
-                          title={online ? "Active recently" : "Offline"}
-                        />
+                      </div>
+                      <span
+                        className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ring-1 ring-white ${
+                        online ? "bg-green-400" : "bg-gray-400"
+                        }`}
+                        title={online ? "Active recently" : "Offline"}
+                      />
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
-                            {p.displayName || p.uid || "User"}
-                          </div>
-                          <div className="text-xs text-gray-400">
-                            {lastDate
-                              ? lastDate.toLocaleTimeString([], {
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })
-                              : ""}
-                          </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                        <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
+                          {p.displayName || p.uid || "User"}
                         </div>
 
-                        <div className="text-xs text-gray-400 truncate">
-                          {p.text ? p.text.slice(0, 60) : "No recent messages"}
+                        {online ? (
+                          <span className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded-full">
+                          Online
+                          </span>
+                        ) : (
+                          <div className="text-[11px] text-gray-400 truncate">
+                          {lastDate
+                            ? `${Math.max(0, Math.floor(minutesAgo))}m ago`
+                            : "No activity"}
+                          </div>
+                        )}
                         </div>
 
-                        <div className="mt-1 text-[11px] text-gray-500 flex items-center gap-2">
-                          <span>Messages: {p.count || 1}</span>
-                          <span className="hidden sm:inline">| ID: {String(p.uid || p.id || "").slice(0, 8)}</span>
+                        <div className="text-xs text-gray-400 whitespace-nowrap">
+                        {lastDate
+                          ? lastDate.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                          : ""}
                         </div>
                       </div>
 
-                      <button
+                      <div className="text-xs text-gray-500 dark:text-gray-400 truncate mt-1 italic">
+                        {p.text ? p.text.slice(0, 70) : "No recent messages"}
+                      </div>
+
+                      <div className="mt-2 flex items-center justify-between text-[11px] text-gray-500">
+                        <div className="flex items-center gap-2">
+                        <span className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full">
+                          {p.count || 1} msg{(p.count || 1) > 1 ? "s" : ""}
+                        </span>
+                        <span className="hidden sm:inline">ID: {String(p.uid || p.id || "").slice(0, 8)}</span>
+                        </div>
+
+                        <button
                         type="button"
-                        className="text-xs text-indigo-600 hover:underline"
+                        className="text-xs text-indigo-600 hover:underline px-2 py-1 rounded-md"
                         title="Start a direct chat"
-                      >
+                        >
                         Message
-                      </button>
+                        </button>
+                      </div>
+                      </div>
                     </div>
-                  );
+                    );
                 });
               })()}
 
