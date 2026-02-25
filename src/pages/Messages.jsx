@@ -254,7 +254,7 @@ export default function Messages() {
               <div className="text-sm text-gray-400">No participants yet</div>
             )}
           </div>
-        </aside>
+        
 
         {/* Center: Chat */}
         <main className="col-span-7 flex flex-col">
@@ -399,6 +399,6 @@ export default function Messages() {
           </div>
         </aside>
       </div>
-    </div>
+    
   );
 }

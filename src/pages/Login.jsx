@@ -39,6 +39,16 @@ const Login = () => {
       submit.style.background = '#0066ff';
       submit.style.color = '#ffffff';
       submit.style.border = 'none';
+      submit.style.borderRadius = '0.75rem';
+      submit.style.padding = '0.85rem 1rem';
+      submit.style.fontWeight = '700';
+      submit.style.letterSpacing = '0.6px';
+      submit.style.cursor = 'pointer';
+      submit.style.transition = 'transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease';
+      submit.style.background = 'linear-gradient(90deg,#0066ff 0%, #3399ff 100%)';
+      submit.style.color = '#ffffff';
+      submit.style.textTransform = 'uppercase';
+      submit.style.textShadow = '0 1px 0 rgba(0,0,0,0.12)';
       submit.style.boxShadow = '0 6px 18px rgba(0,102,255,0.25)';
     }
 
