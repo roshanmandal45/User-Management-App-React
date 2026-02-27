@@ -59,31 +59,52 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Sliding image carousel */}
-                <div className="mt-6 mx-auto max-w-4xl">
-                  <style>{`
-                    @keyframes slideImage {
-                      0% { transform: translateX(0%); }
-                      25% { transform: translateX(0%); }
-                      33% { transform: translateX(-100%); }
-                      58% { transform: translateX(-100%); }
-                      66% { transform: translateX(-200%); }
-                      91% { transform: translateX(-200%); }
-                      100% { transform: translateX(0%); }
-                    }
-                  `}</style>
+                {/* Quick preview of recent users */}
+                <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full">Admin</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 2h ago</div>
+                    </div>
+                  </div>
 
-                  <div className="overflow-hidden rounded-2xl shadow-lg">
-                    <div
-                      className="flex w-full"
-                      style={{ animation: 'slideImage 12s linear infinite' }}
-                    >
-                      <img className="w-full flex-shrink-0 h-80 object-cover" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=320&fit=crop" alt="Team collaboration" />
-                      <img className="w-full flex-shrink-0 h-80 object-cover" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=320&fit=crop&q=75" alt="User management" />
-                      <img className="w-full flex-shrink-0 h-80 object-cover" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=320&fit=crop&q=50" alt="Analytics dashboard" />
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=8" alt="user-2" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-300 rounded-full">Member</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: yesterday</div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=12" alt="user-3" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 rounded-full">Guest</div>
+                      </div>
+                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 3d ago</div>
                     </div>
                   </div>
                 </div>
+
+                {/* Micro-metrics row */}
                 <div className="mt-6 mx-auto max-w-3xl flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="text-xs text-gray-500 dark:text-gray-400">Monthly growth</div>
