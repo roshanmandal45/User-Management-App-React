@@ -285,65 +285,65 @@ export default function Messages() {
                 const isMe = user && (msg.uid === user.uid || msg.uid === user.id);
                 return (
                   <div
-                    key={msg.id}
-                    className={`flex items-end gap-3 ${
-                      isMe ? "justify-end" : "justify-start"
-                    }`}
+                  key={msg.id}
+                  className={`flex items-end gap-3 ${
+                    isMe ? "justify-end" : "justify-start"
+                  }`}
                   >
+                  {!isMe && (
+                    <img
+                    src={
+                      msg.photoURL ||
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                      msg.displayName || "User"
+                      )}&background=random`
+                    }
+                    alt="avatar"
+                    className="w-9 h-9 rounded-full object-cover"
+                    />
+                  )}
+
+                  <div className="max-w-[75%]">
+                    <div
+                    className={`px-4 py-2 rounded-2xl text-sm break-words shadow-sm ${
+                      isMe
+                      ? "bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-br-none"
+                      : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none border border-gray-100 dark:border-gray-700"
+                    }`}
+                    >
                     {!isMe && (
-                      <img
-                        src={
-                          msg.photoURL ||
-                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                            msg.displayName || "User"
-                          )}&background=random`
-                        }
-                        alt="avatar"
-                        className="w-9 h-9 rounded-full object-cover"
-                      />
-                    )}
-
-                    <div className="max-w-[75%]">
-                      <div
-                        className={`px-4 py-2 rounded-2xl text-sm break-words shadow-sm ${
-                          isMe
-                            ? "bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-br-none"
-                            : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none border border-gray-100 dark:border-gray-700"
-                        }`}
-                      >
-                        {!isMe && (
-                          <div className="text-[11px] font-semibold text-indigo-600 mb-1">
-                            {msg.displayName || "User"}
-                          </div>
-                        )}
-                        <div className="leading-relaxed">{msg.text}</div>
-                        <div
-                          className={`text-[10px] mt-2 text-right ${
-                            isMe ? "text-white/70" : "text-gray-400"
-                          }`}
-                        >
-                          {msg.createdAt?.seconds
-                            ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })
-                            : "Just now"}
-                        </div>
+                      <div className="text-[11px] font-semibold text-indigo-600 mb-1">
+                      {msg.displayName || "User"}
                       </div>
-                    </div>
-
-                    {isMe && (
-                      <img
-                        src={
-                          msg.photoURL ||
-                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                            msg.displayName || "You"
-                          )}&background=random`
-                        }
-                        alt="avatar"
-                        className="w-9 h-9 rounded-full object-cover"
-                      />
                     )}
+                    <div className="leading-relaxed">{msg.text}</div>
+                    <div
+                      className={`text-[10px] mt-2 text-right ${
+                      isMe ? "text-white/70" : "text-gray-400"
+                      }`}
+                    >
+                      {msg.createdAt?.seconds
+                      ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        })
+                      : "Just now"}
+                    </div>
+                    </div>
+                  </div>
+
+                  {isMe && (
+                    <img
+                    src={
+                      msg.photoURL ||
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                      msg.displayName || "You"
+                      )}&background=random`
+                    }
+                    alt="avatar"
+                    className="w-9 h-9 rounded-full object-cover"
+                    />
+                  )}
                   </div>
                 );
               })
