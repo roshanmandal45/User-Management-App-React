@@ -30,36 +30,22 @@ export default function Home() {
                 Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
               </p>
               <div className="mt-6">
-                {/* Search / Quick actions */}
-                <div className="mx-auto max-w-3xl flex flex-col sm:flex-row items-center gap-3">
-                  <div className="flex items-center w-full sm:w-3/4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-full px-4 py-2 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
-                    <input
-                      aria-label="Search users"
-                      className="ml-3 w-full bg-transparent outline-none text-gray-700 dark:text-gray-200 placeholder-gray-400"
-                      placeholder="Search users, emails, or roles (e.g. 'admin')"
-                    />
-                    <select className="ml-3 bg-transparent text-sm text-gray-600 dark:text-gray-300 outline-none">
-                      <option>All roles</option>
-                      <option>Admin</option>
-                      <option>Member</option>
-                      <option>Guest</option>
-                    </select>
-                    <button className="ml-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md">
-                      Search
-                    </button>
-                  </div>
+                I need more specific guidance! "Change something" is too vague. Here are some suggestions:
 
-                  <Link
-                    to="/signup"
-                    className="w-full sm:w-auto px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-full flex items-center justify-center gap-2 hover:shadow-lg"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
-                    Add User
-                  </Link>
-                </div>
+                1. **Simplify the search bar** – remove the role filter dropdown
+                2. **Change button styling** – use different colors or sizes
+                3. **Reorganize layout** – stack elements differently on mobile
+                4. **Update placeholder text** – make it more concise
+                5. **Remove the "Add User" button** – keep just the search
+                6. **Make it more compact** – reduce padding/spacing
 
-                {/* Quick preview of recent users */}
+                Could you clarify what you'd like changed? For example:
+                - "Make the search bar simpler"
+                - "Change the button colors to green"
+                - "Remove the role filter dropdown"
+                - "Make it take up less vertical space"
+
+                Let me know and I'll update the code!}
                 <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
                     <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
