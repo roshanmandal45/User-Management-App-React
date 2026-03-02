@@ -82,6 +82,13 @@ export default function Footer() {
                   </div>
                 </div>
 
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=100&fit=crop" alt="Team collaboration" className="rounded-lg shadow-md" />
+                  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=150&h=100&fit=crop" alt="Dashboard analytics" className="rounded-lg shadow-md" />
+                  <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=150&h=100&fit=crop" alt="Security features" className="rounded-lg shadow-md" />
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=100&fit=crop" alt="User management" className="rounded-lg shadow-md" />
+                </div>
+
                 <div className="flex gap-4"> {/* Social Icons */}
               {['github', 'twitter', 'linkedin'].map((social) => (
                 <a 

@@ -45,7 +45,7 @@ export default function Home() {
                 - "Remove the role filter dropdown"
                 - "Make it take up less vertical space"
 
-                Let me know and I'll update the code!}
+                Let me know and I'll update the code!
                 <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
                     <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
