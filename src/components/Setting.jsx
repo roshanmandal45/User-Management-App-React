@@ -72,10 +72,10 @@ export default function Settings() {
 
               <textarea
                 placeholder="Bio..."
-                className="w-full p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
+                className="w-full p-3 rounded-lg border dark:bg-red-800 dark:text-white"
               />
 
-              <button className="px-6 py-2 bg-green-500 text-white rounded-lg hover:scale-105 transition">
+              <button className="px-6 py-2 bg-red-500 text-white rounded-lg hover:scale-105 transition">
                 Save Changes
               </button>
             </div>
