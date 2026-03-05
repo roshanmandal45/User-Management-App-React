@@ -6,16 +6,25 @@ export default function UserProfile() {
 
   if (!user) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] mt-10">
-        <p className="text-center animate-pulse text-gray-700 dark:text-gray-300 mb-4">
-          No user data available.
-        </p>
+      <div className="flex flex-col items-center justify-center min-h-[50vh] mt-10 space-y-4">
+      <div className="text-6xl">👤</div>
+      <p className="text-center animate-pulse text-gray-700 dark:text-gray-300 mb-2">
+        No user data available.
+      </p>
+      <div className="flex gap-3">
         <button
-          onClick={() => window.history.back()}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        onClick={() => window.history.back()}
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
-          Go back
+        Go back
         </button>
+        <a
+        href="/"
+        className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-white"
+        >
+        Go home
+        </a>
+      </div>
       </div>
     );
   }
