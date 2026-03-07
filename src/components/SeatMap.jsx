@@ -4,7 +4,6 @@ export default function SeatMap() {
   const [selectedSeats, setSelectedSeats] = useState([])
   
   const handleSeatClick = (seatId) => {
-    export default function SeatMap() {
       const [selectedSeats, setSelectedSeats] = useState([])
 
       const reservedSeats = ['B2', 'C3'] // example reserved seats
@@ -129,4 +128,5 @@ export default function SeatMap() {
       <p className="mt-6 text-lg">Selected: {selectedSeats.join(', ') || 'None'}</p>
     </div>
   )
+   export default function SeatMap() 
 }

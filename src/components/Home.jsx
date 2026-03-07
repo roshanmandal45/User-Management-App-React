@@ -10,87 +10,69 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
         
         {/* Decorative blobs */}
-        <div className="absolute top-20 right-0 -mr-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-purple-400/20 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-0 -mr-20 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-rose-400/20 rounded-full blur-3xl" />
 
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <span className="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-bold text-sm tracking-wide uppercase">
-              User Management System 2.0
-            </span>
-            
-            <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tight leading-tight">
-              Manage Users with <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                Speed & Style
+          <div className="container mx-auto px-6 text-center">
+            <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <span className="inline-block px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 font-bold text-sm tracking-wide uppercase">
+                User Management System 2.0
               </span>
-            </h1>
-            <>
-              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-                Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
-              </p>
-              <div className="mt-6">
-                I need more specific guidance! "Change something" is too vague. Here are some suggestions:
-
-                1. **Simplify the search bar** – remove the role filter dropdown
-                2. **Change button styling** – use different colors or sizes
-                3. **Reorganize layout** – stack elements differently on mobile
-                4. **Update placeholder text** – make it more concise
-                5. **Remove the "Add User" button** – keep just the search
-                6. **Make it more compact** – reduce padding/spacing
-
-                Could you clarify what you'd like changed? For example:
-                - "Make the search bar simpler"
-                - "Change the button colors to green"
-                - "Remove the role filter dropdown"
-                - "Make it take up less vertical space"
-
-                Let me know and I'll update the code!
-                <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
-                        </div>
-                        <div className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full">Admin</div>
-                      </div>
-                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 2h ago</div>
-                    </div>
+              
+              <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tight leading-tight">
+                Manage Users with <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-rose-600">
+            Speed & Style
+                </span>
+              </h1>
+              <>
+                <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
+                </p>
+                <div className="mt-6">
+            <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300 rounded-full">Admin</div>
                   </div>
-
-                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=8" alt="user-2" />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
-                        </div>
-                        <div className="text-xs px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-300 rounded-full">Member</div>
-                      </div>
-                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: yesterday</div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                    <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=12" alt="user-3" />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
-                        </div>
-                        <div className="text-xs px-2 py-1 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 rounded-full">Guest</div>
-                      </div>
-                      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 3d ago</div>
-                    </div>
-                  </div>
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 2h ago</div>
                 </div>
+              </div>
 
-                {/* Micro-metrics row */}
+              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=8" alt="user-2" />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-300 rounded-full">Member</div>
+                  </div>
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: yesterday</div>
+                </div>
+              </div>
+
+              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=12" alt="user-3" />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 rounded-full">Guest</div>
+                  </div>
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 3d ago</div>
+                </div>
+              </div>
+            </div>}
                 <div className="mt-6 mx-auto max-w-3xl flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="text-xs text-gray-500 dark:text-gray-400">Monthly growth</div>
