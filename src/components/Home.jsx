@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-sans selection:bg-blue-500/30">
       
-      {/* Hero Section */}
+      
       <section className="relative overflow-hidden pt-20 pb-20 lg:pt-32 lg:pb-28">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
         
@@ -93,7 +93,7 @@ export default function Home() {
                   <div className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-gray-900/40 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
                     <img className="w-12 h-12 rounded-full object-cover" src="https://i.pravatar.cc/48?img=8" alt="Miguel" />
                     <div className="flex-1">
-                      <div className="flex items-center justify-between"></div>
+                      <div className="flex items-center justify-between">
                         <div>
                           <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
@@ -126,7 +126,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>)
+        </div>
+      </section>
+
       <section className="py-20 bg-white dark:bg-gray-900/50">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
