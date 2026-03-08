@@ -9,158 +9,124 @@ export default function Home() {
       <section className="relative overflow-hidden pt-20 pb-20 lg:pt-32 lg:pb-28">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
         
-        {/* Decorative blobs */}
-          <div className="absolute top-20 right-0 -mr-20 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-rose-400/20 rounded-full blur-3xl" />
+        /* Decorative blobs */
+        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-[36rem] h-[28rem] bg-gradient-to-r from-amber-200/30 to-rose-200/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-6 right-6 w-72 h-72 bg-blue-100/20 rounded-full blur-2xl pointer-events-none" />
 
-          <div className="container mx-auto px-6 text-center">
-            <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-              <span className="inline-block px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 font-bold text-sm tracking-wide uppercase">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            {/* Left: Headline & CTAs */}
+            <div className="lg:col-span-7 text-center lg:text-left space-y-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 font-semibold text-sm tracking-wide uppercase">
                 User Management System 2.0
               </span>
-              
-              <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tight leading-tight">
-                Manage Users with <br />
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+                Manage users with clarity,
+                <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-rose-600">
-            Speed & Style
+                  speed & style
                 </span>
               </h1>
-              <>
-                <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            Powerful tools to onboard, manage and analyze your users — analytics, roles, and avatars all in one elegant UI.
-                </p>
-                <div className="mt-6">
-            <div className="mt-6 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=5" alt="user-1" />
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
-              </div>
-              <div className="text-xs px-2 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300 rounded-full">Admin</div>
-                  </div>
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 2h ago</div>
-                </div>
+
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
+                Onboard, organize and analyze your user base — beautiful avatars, roles, and realtime stats in a single elegant dashboard.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/users"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md w-full sm:w-auto text-center"
+                >
+                  Explore Users
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 font-semibold rounded-lg w-full sm:w-auto text-center"
+                >
+                  Create Account
+                </Link>
               </div>
 
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=8" alt="user-2" />
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
-              </div>
-              <div className="text-xs px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-300 rounded-full">Member</div>
-                  </div>
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: yesterday</div>
+              <div className="mt-6 flex flex-wrap items-center gap-4 justify-center lg:justify-start text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-3">
+                  <div className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full font-semibold text-green-600">+6.8%</div>
+                  <div>Monthly growth</div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full font-semibold text-blue-600">12.4k</div>
+                  <div>Total users</div>
+                </div>
+                <div className="hidden sm:flex items-center gap-3">
+                  <div className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full font-semibold text-purple-600">132</div>
+                  <div>New today</div>
                 </div>
               </div>
+            </div>
 
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-3 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
-                <img className="w-12 h-12 rounded-full ring-1 ring-white dark:ring-gray-900 object-cover" src="https://i.pravatar.cc/48?img=12" alt="user-3" />
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
-              </div>
-              <div className="text-xs px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 rounded-full">Guest</div>
+            {/* Right: Compact dashboard preview */}
+            <div className="lg:col-span-5">
+              <div className="bg-white dark:bg-gray-800/60 rounded-3xl p-6 shadow-xl border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Active now</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">4,218</div>
                   </div>
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">Last active: 3d ago</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Updated 2m ago</div>
                 </div>
-              </div>
-            </div>}
-                <div className="mt-6 mx-auto max-w-3xl flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="text-xs text-gray-500 dark:text-gray-400">Monthly growth</div>
-                    <div className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm font-semibold text-green-600 dark:text-green-300 shadow-sm">+6.8%</div>
-                  </div>
 
-                  <div className="hidden sm:flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3l2 2" /></svg>
-                    <div>Average session 5m 12s</div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <div className="text-xs text-gray-500 dark:text-gray-400">Verified</div>
-                    <div className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs rounded-full flex items-center gap-1 shadow-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                      Company-ready
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 flex items-center justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl w-full">
-                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5V8a2 2 0 00-2-2h-3M2 20h5V4a2 2 0 012-2h6a2 2 0 012 2v16" /></svg>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">12.4k</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">Total Users</div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full object-cover" src="https://i.pravatar.cc/48?img=5" alt="Aisha" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Aisha Thompson</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">aisha@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 rounded-full">Admin</div>
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Last active: 2h ago</div>
                     </div>
                   </div>
 
-                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z" /></svg>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">98%</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">Active Weekly</div>
-                    </div>
-                  </div>
-
-                  <div className="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-extrabold text-gray-900 dark:text-white">132</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">New Today</div>
+                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-gray-900/40 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full object-cover" src="https://i.pravatar.cc/48?img=8" alt="Miguel" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between"></div>
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Miguel Santos</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">miguel@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-600 rounded-full">Member</div>
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Last active: yesterday</div>
                     </div>
                   </div>
+
+                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-transparent hover:border-gray-100 dark:hover:border-gray-700 transition-colors">
+                    <img className="w-12 h-12 rounded-full object-cover" src="https://i.pravatar.cc/48?img=12" alt="Lena" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">Lena Müller</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">lena@example.com</div>
+                        </div>
+                        <div className="text-xs px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-700 rounded-full">Guest</div>
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Last active: 3d ago</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-between">
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Team trust</div>
+                  <div className="text-sm font-semibold bg-gradient-to-r from-green-400 to-blue-500 text-white px-3 py-1 rounded-full shadow-sm">Company-ready</div>
                 </div>
               </div>
-
-              <div className="mt-6 flex items-center justify-center gap-3">
-                <div className="flex -space-x-3">
-                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=1" alt="avatar1" />
-                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=2" alt="avatar2" />
-                  <img className="w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900" src="https://i.pravatar.cc/40?img=3" alt="avatar3" />
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  Trusted by teams at startups and enterprises worldwide
-                </div>
-              </div>
-            </>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              A precise, secure, and beautiful way to manage your user base. track stats, names, emails, and avatars with our modern dashboard.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Link 
-                to="/users" 
-                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
-              >
-                Explore Users
-              </Link>
-              <Link 
-                to="/signup" 
-                className="px-8 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 font-bold rounded-xl transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
-              >
-                Create Account
-              </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
+        </div>)
       <section className="py-20 bg-white dark:bg-gray-900/50">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
